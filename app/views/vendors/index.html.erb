@@ -15,16 +15,12 @@
         <td><%= vendor.name %></td>
         <td><%= vendor.description %></td>
         <td><%= link_to 'Show', vendor %></td>
-        <% if user_signed_in? %>
-          <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-          <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<% if user_signed_in? %>
+<% if can? :create, Vendor %>
   <%= link_to 'New Vendor', new_vendor_path %>
 <% end %>

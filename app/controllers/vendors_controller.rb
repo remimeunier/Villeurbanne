@@ -1,4 +1,5 @@
 class VendorsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_vendor, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
@@ -25,10 +26,13 @@ class VendorsController < ApplicationController
   # POST /vendors
   # POST /vendors.json
   def create
+    #logger.info params[:vendor]
     @vendor = Vendor.new(vendor_params)
 
     respond_to do |format|
       if @vendor.save
+        current_user.vendor_id = @vendor.id
+        current_user.save
         format.html { redirect_to @vendor, notice: 'Vendor was successfully created.' }
         format.json { render :show, status: :created, location: @vendor }
       else
@@ -70,6 +74,6 @@ class VendorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vendor_params
-      params[:vendor].permit(:name, :description)
+      params[:vendor].require(:vendor).permit(:name, :description)
     end
 end

@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<strong> Nom : </strong>
+<p><%= @vendor.name %></p>
+<strong> Description : </strong>
+<p><%= @vendor.description %></p>
 <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
 <%= link_to 'Back', vendors_path %>
