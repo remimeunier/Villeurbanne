@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails Villeurbanne: development" uuid="6cd51a86-c586-4422-b84b-dad8853fb0ff">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails Villeurbanne: test" uuid="c65ea4a3-0f8c-4d24-ac56-51a8fdfccb5c">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails Villeurbanne: production" uuid="2e5228bc-2a8d-4db5-b70a-2ff0c40069bd">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
