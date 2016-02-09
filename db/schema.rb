@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208142930) do
+ActiveRecord::Schema.define(version: 20160209122738) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 20160208142930) do
     t.datetime "updated_at",                                         null: false
     t.integer  "vendor_id",              limit: 4
     t.boolean  "admin",                              default: false
+    t.boolean  "approved",                           default: false, null: false
   end
 
+  add_index "users", ["approved"], name: "index_users_on_approved", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

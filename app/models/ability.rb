@@ -7,7 +7,7 @@ class Ability
     if user.admin
       can :manage, :all
     else
-      can :read, :all
+      can :read, Vendor
       can :create, Vendor do |vendor|
         (user.vendor_id == nil) && user.id
       end
