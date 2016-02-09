@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  def add_vendor_to_user(id)
-  	vendor_id = id
-  	save	
-  end
+ # def add_vendor_to_user(id)
+  #	vendor_id = id
+  #	save	
+  #end
 end
