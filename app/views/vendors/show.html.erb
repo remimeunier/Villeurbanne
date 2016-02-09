@@ -3,5 +3,8 @@
 <p><%= @vendor.name %></p>
 <strong> Description : </strong>
 <p><%= @vendor.description %></p>
+
+<% if can? :update, @vendor %>
 <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
+<% end %>
 <%= link_to 'Back', vendors_path %>
