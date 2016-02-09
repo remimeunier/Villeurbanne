@@ -17,6 +17,9 @@
         <td><%= vendor.description %></td>
         <td><%= vendor.user.email if vendor.user %></td>
         <td><%= link_to 'Show', vendor %></td>
+        <% if @admin %>
+          <td %> <%= link_to 'validate', validate_vendor_vendor_path(vendor), method: :put, :remote => true %> </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

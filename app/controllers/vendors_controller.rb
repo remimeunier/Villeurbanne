@@ -1,12 +1,22 @@
 class VendorsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_vendor, only: [:show, :edit, :update, :destroy]
+  before_action :set_vendor, only: [:show, :edit, :update, :destroy, :admin_idex]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
+  def validate_vendor
+    @vendor.approved = true
+    @vendor.save
+  end
+
+  def admin_index
+    @vendors = Vendor.where(:approved => false)
+    @admin = true
+    render 'index'
+  end
   # GET /vendors
   # GET /vendors.json
   def index
-    @vendors = Vendor.all
+    @vendors = Vendor.where(:approved => true)
   end
 
   # GET /vendors/1
