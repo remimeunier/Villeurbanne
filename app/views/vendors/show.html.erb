@@ -3,8 +3,34 @@
 <p><%= @vendor.name %></p>
 <strong> Description : </strong>
 <p><%= @vendor.description %></p>
+<strong> adresse : </strong>
+<p><%= @vendor.address %></p>
+
+<strong> longitude : </strong>
+<p><%= @vendor.longitude %></p>
+
+<strong> latitude : </strong>
+<p><%= @vendor.latitude %></p>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
 
 <% if can? :update, @vendor %>
 <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
 <% end %>
 <%= link_to 'Back', vendors_path %>
+
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({ 
+	provider: {
+
+	},
+ internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(16);
+});
+</script>

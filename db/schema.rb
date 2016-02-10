@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209180441) do
+ActiveRecord::Schema.define(version: 20160210192517) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 20160209180441) do
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
     t.boolean  "approved",                  default: false, null: false
+    t.float    "longitude",   limit: 24
+    t.float    "latitude",    limit: 24
+    t.string   "address",     limit: 255
   end
 
   add_index "vendors", ["approved"], name: "index_vendors_on_approved", using: :btree

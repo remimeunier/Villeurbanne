@@ -22,6 +22,11 @@ class VendorsController < ApplicationController
   # GET /vendors/1
   # GET /vendors/1.json
   def show
+    #@marker = "[{\"lat\":#{@vendor.latitude},\"lng\":#{@vendor.latitude}}]"
+    @hash = Gmaps4rails.build_markers(@vendor) do |vendor, marker|
+      marker.lat vendor.latitude
+      marker.lng vendor.longitude
+    end
   end
 
   # GET /vendors/new
@@ -38,6 +43,7 @@ class VendorsController < ApplicationController
   def create
     #logger.info params[:vendor]
     @vendor = Vendor.new(vendor_params)
+    @vendor.approved = false
 
     respond_to do |format|
       if @vendor.save
@@ -84,6 +90,6 @@ class VendorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vendor_params
-      params.require(:vendor).permit(:name, :description)
+      params.require(:vendor).permit(:name, :description, :address, :longitude, :latitude)
     end
 end

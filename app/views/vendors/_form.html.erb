@@ -13,7 +13,14 @@
   <%= label_tag(:name, "nom :") %>
   <%= f.text_field(:name) %>
   <%= label_tag(:description, "description") %>
-  <%= f.text_field :description %>
+  <%= f.text_field :description, :input_html => { class: 'test', :cols => 5, :rows => 10 } %>
+
+  <%= label_tag(:longitude, "longe :") %>
+  <%= f.text_field(:longitude) %>
+  <%= label_tag(:latitude, "late :") %>
+  <%= f.text_field(:latitude) %>
+  <%= label_tag(:address, "addresse :") %>
+  <%= f.text_field(:address) %>
   <div class="actions">
     <%= f.submit %>
   </div>
